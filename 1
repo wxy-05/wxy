@@ -1,0 +1,15 @@
+def calculate(a: float, operator: str, b: float) -> float:
+    """
+    四则运算计算器
+    :param a: 第一个操作数
+    :param operator: 运算符 (+, -, *, /)
+    :param b: 第二个操作数
+    :return: 计算结果
+    """
+    operations = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x / y if y != 0 else float('NaN')
+    }
+    return operations.get(operator, lambda x, y: float('NaN'))(a, b)
