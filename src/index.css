@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  transition: all 0.3s;
+  background-color: rgba(106, 115, 125, 0.2);
+  &:hover {
+    background-color: rgba(106, 115, 125, 0.27);
+  }
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+.carousel {
+  margin-bottom: 12px;
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  cursor: grab;
+}
+
+.carousel-inner:active {
+  cursor: grabbing;
+}
+
+.carousel-inner img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
+}
+
+.carousel-inner img:hover {
+  outline: 2px solid #4a90e5;
+}
+
+/* 自动轮播动画 */
+@keyframes carousel-auto {
+  0%, 20% { transform: translateX(0); }
+  25%, 45% { transform: translateX(-100%); }
+  50%, 70% { transform: translateX(-200%); }
+  75%, 95% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+
+/* 应用自动轮播 */
+.carousel-inner {
+  animation: carousel-auto 15s infinite;
+}
+
+/* 鼠标悬停时暂停轮播 */
+.carousel:hover .carousel-inner {
+  animation-play-state: paused;
+}
